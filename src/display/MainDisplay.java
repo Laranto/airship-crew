@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 
 public class MainDisplay extends JPanel{
     
+    /**
+     * Displays the mainpart of the game.
+     */
     public MainDisplay() {
         this.setPreferredSize(new Dimension(800, 600));
         this.setDoubleBuffered(true);
@@ -18,7 +21,7 @@ public class MainDisplay extends JPanel{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.magenta);
+        g.setColor(Color.RED.darker());
         g.fillRect(10, 10, 100, 100);
     }
 }
