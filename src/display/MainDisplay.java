@@ -3,6 +3,7 @@ package display;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -19,6 +20,6 @@ public class MainDisplay extends JPanel{
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(Color.magenta);
-        g.fillRect(10, 10, 100, 100);
+        g.fillRect(10, 10, (int)(Math.random()*200), (int)(Math.random()*200));
     }
 }
