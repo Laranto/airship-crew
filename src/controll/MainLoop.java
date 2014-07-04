@@ -4,6 +4,8 @@ import java.awt.Container;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.Map;
+
 
 
 /**
@@ -15,14 +17,19 @@ public class MainLoop implements Runnable {
 
     private boolean gameRunning;
     private Set<Container> drawList;
+    private Map map;
     
     public MainLoop() {
         gameRunning = true;
         drawList = new HashSet<>(); //Use of hashset so something is just once in the list and we don't care about the order
     }
     
-    public void registerDrawable(Container drawable){
-        drawList.add(drawable);
+    public void registerContainer(Container container){
+        drawList.add(container);
+    }
+    
+    public void setMap(Map map){
+        this.map=map;
     }
     
     @Override

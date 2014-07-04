@@ -3,17 +3,24 @@ package display;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.util.Random;
+import java.awt.Point;
 
 import javax.swing.JPanel;
 
+import model.Map;
+
+import common.Constants;
+
 public class MainDisplay extends JPanel{
+    
+    private Map map;
+    private Point playerPosition = new Point(2, 6);
     
     /**
      * Displays the mainpart of the game.
      */
     public MainDisplay() {
-        this.setPreferredSize(new Dimension(800, 600));
+        this.setPreferredSize(new Dimension(Constants.BOARD_WIDTH, Constants.BOARD_HEIGHT));
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         this.setBackground(Color.black);
@@ -22,7 +29,10 @@ public class MainDisplay extends JPanel{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.setColor(Color.RED.darker());
-        g.fillRect(10, 10, (int)(Math.random()*200), (int)(Math.random()*200));
+        map.getViewMap(playerPosition).paint(g);
+    }
+
+    public void setMap(Map map) {
+        this.map=map;
     }
 }
