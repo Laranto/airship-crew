@@ -3,10 +3,10 @@ package display;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Point;
 
 import javax.swing.JPanel;
 
+import model.character.Chara;
 import model.map.Map;
 
 import common.Constants;
@@ -14,7 +14,7 @@ import common.Constants;
 public class MainDisplay extends JPanel{
     
     private Map map;
-    private Point playerPosition = new Point(2, 6);
+    private Chara player;
     
     /**
      * Displays the mainpart of the game.
@@ -29,12 +29,26 @@ public class MainDisplay extends JPanel{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        if(map!=null){
-            map.getViewMap(playerPosition).paint(g);
+        if(map!=null &&player!=null){
+            map.getViewMap(player.getPosition()).paint(g);
         }
     }
 
     public void setMap(Map map) {
         this.map=map;
     }
+
+    public Chara getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Chara player) {
+        this.player = player;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+    
+    
 }

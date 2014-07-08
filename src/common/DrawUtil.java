@@ -16,7 +16,8 @@ import model.map.tilebase.TileEnum;
 
 public class DrawUtil {
     private static Random                                 rand         = new Random();
-    private static HashMap<TileEnum, List<BufferedImage>> imageMap     = loadImageMap();
+    private static HashMap<TileEnum, List<BufferedImage>> tileImageMap     = loadImageMap();
+    private static HashMap<File, BufferedImage> singleImageMap = new HashMap<>();
 
     /**
      * Number of tiles in width
@@ -31,6 +32,15 @@ public class DrawUtil {
         return new Point(tilePos.x * Constants.TILE_SIZE_PX , tilePos.y * Constants.TILE_SIZE_PX);
     }
 
+    public static BufferedImage getImage(File file){
+        BufferedImage img = singleImageMap.get(file);
+        if(img==null){
+            img = loadImage(file);
+            singleImageMap.put(file, img);
+        }
+        return img;
+    }
+    
     private static HashMap<TileEnum, List<BufferedImage>> loadImageMap() {
         HashMap<TileEnum, List<BufferedImage>> imgMap = new HashMap<>();
         for (TileEnum tileType : TileEnum.values()) {
@@ -44,20 +54,26 @@ public class DrawUtil {
                 });
                 imgMap.put(tileType, new ArrayList<BufferedImage>(imageFiles.length));
                 for (File imgFile : imageFiles) {
-                    try {
-                        BufferedImage img = ImageIO.read(imgFile);
-                        imgMap.get(tileType).add(img);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    imgMap.get(tileType).add(loadImage(imgFile));
                 }
             }
         }
         return imgMap;
     }
 
+    private static BufferedImage loadImage(File imgFile) {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(imgFile);
+        } catch (IOException e) {
+            System.err.println("Tried reading file " + imgFile.getAbsolutePath());
+            e.printStackTrace();
+        }
+        return img;
+    }
+
     public static BufferedImage getRandomImage(TileEnum type) {
-        List<BufferedImage> imgList = imageMap.get(type);
+        List<BufferedImage> imgList = tileImageMap.get(type);
         return imgList.get(rand.nextInt(imgList.size()));
     }
 }

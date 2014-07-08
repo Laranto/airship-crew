@@ -15,7 +15,7 @@ public class ViewMap {
         Point topLeft = new Point(centerPosition.x-DrawUtil.TILES_WIDTH/2,centerPosition.y-DrawUtil.TILES_HEIGHT/2);
         for(int i = 0;i<DrawUtil.TILES_WIDTH;i++){
             for(int j = 0;j<DrawUtil.TILES_HEIGHT;j++){
-                if((topLeft.x+i)<0||(topLeft.y+j)<0||(topLeft.x+i)>DrawUtil.TILES_WIDTH||(topLeft.y+j)>DrawUtil.TILES_HEIGHT){
+                if((topLeft.x+i)<0||(topLeft.y+j)<0||(topLeft.x+i)>fullMap.length||(topLeft.y+j)>fullMap[i].length){
                     map[i][j]=new Tile();
                     map[i][j].setBase(TileEnum.NULL.createInstance());
                 }else{

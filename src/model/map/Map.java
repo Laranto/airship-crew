@@ -2,6 +2,7 @@ package model.map;
 
 import java.awt.Point;
 
+import model.character.Chara;
 import model.map.tilebase.TileEnum;
 
 
@@ -36,5 +37,10 @@ public class Map {
     
     public void setMapTile(TileEnum tileType,int x, int y){
         map[x][y].setBase(tileType.createInstance());
+    }
+
+    public void put(Chara chara , int x , int y) {
+        map[x][y].setChara(chara);
+        chara.getPosition().setLocation(x, y);
     }
 }
