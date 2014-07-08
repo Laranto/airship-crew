@@ -29,7 +29,9 @@ public class MainDisplay extends JPanel{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        map.getViewMap(playerPosition).paint(g);
+        if(map!=null){
+            map.getViewMap(playerPosition).paint(g);
+        }
     }
 
     public void setMap(Map map) {
