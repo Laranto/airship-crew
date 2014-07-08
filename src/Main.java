@@ -2,8 +2,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import model.Map;
-import model.tilebase.TileEnum;
+import model.map.Map;
+import model.map.tilebase.TileEnum;
 import controll.MainLoop;
 import display.ControlPanel;
 import display.MainDisplay;

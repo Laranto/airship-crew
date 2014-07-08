@@ -7,7 +7,7 @@ import java.awt.Point;
 
 import javax.swing.JPanel;
 
-import model.Map;
+import model.map.Map;
 
 import common.Constants;
 

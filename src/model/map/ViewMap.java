@@ -1,9 +1,9 @@
-package model;
+package model.map;
 
 import java.awt.Graphics;
 import java.awt.Point;
 
-import model.tilebase.TileEnum;
+import model.map.tilebase.TileEnum;
 
 import common.DrawUtil;
 

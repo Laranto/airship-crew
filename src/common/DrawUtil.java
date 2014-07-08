@@ -12,7 +12,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-import model.tilebase.TileEnum;
+import model.map.tilebase.TileEnum;
 
 public class DrawUtil {
     private static Random                                 rand         = new Random();

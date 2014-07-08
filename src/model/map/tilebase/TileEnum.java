@@ -1,9 +1,9 @@
-package model.tilebase;
+package model.map.tilebase;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 
-import model.TileBase;
+import model.map.TileBase;
 
 import common.Constants;
 
