@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import model.map.Map;
 import model.map.tilebase.TileEnum;
 import controll.MainLoop;
+import controll.input.HumanInput;
 import display.ControlPanel;
 import display.MainDisplay;
 
@@ -14,7 +15,7 @@ public class Main {
     private MainDisplay display; 
     private ControlPanel controlPane;
     private MainLoop loop;
-    
+    private HumanInput input;
     
     public Main() {
         //Runs in this thread (Display Thread)
@@ -23,6 +24,14 @@ public class Main {
         new Thread(loop = new MainLoop()).start();
         loop.registerContainer(display);
         createMap();
+        addInput();
+    }
+
+
+
+    private void addInput() {
+        input=new HumanInput();
+        display.addKeyListener(input);
     }
 
 
