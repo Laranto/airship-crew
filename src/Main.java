@@ -27,8 +27,8 @@ public class Main {
         //Start a thread with the main loop (Logic Thread)
         new Thread(loop = new MainLoop()).start();
         loop.registerContainer(display);
-        createMap();
         addInput();
+        createMap();
     }
 
 
@@ -45,6 +45,7 @@ public class Main {
         loop.setMap(map);
         display.setMap(map);
         Chara player = new Cat();
+        input.setControlled(player);
         map.put(player,15,15);
         display.setPlayer(player);
         map.setMapTile(TileEnum.FLOOR_WOOD, 14, 15);

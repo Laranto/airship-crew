@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.HashMap;
 
 import model.Direction;
+import model.action.MoveAction;
 
 import common.Constants;
 import common.DrawUtil;
@@ -37,6 +38,14 @@ public class Cat extends Chara {
 
     @Override
     public void move(Direction dir) {
-        // TODO Auto-generated method stub
+        facingDirection=dir;
+        mvAction=new MoveAction();
+        mvAction.setOldPos(position);
+        mvAction.setNewPos(
+                new Point(
+                        dir.getDirectionVector().get(0)+position.x,
+                        dir.getDirectionVector().get(1)+position.y
+                        )
+                );
     }
 }

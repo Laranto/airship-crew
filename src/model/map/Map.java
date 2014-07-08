@@ -1,6 +1,10 @@
 package model.map;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import model.character.Chara;
 import model.map.tilebase.TileEnum;
@@ -14,9 +18,11 @@ import model.map.tilebase.TileEnum;
 public class Map {
 
     Tile[][] map;
+    Set<Chara> charas;
     int width,height;
     
     public Map(int width, int height) {
+        charas=new HashSet<>();
         map = new Tile[width][height];
         this.width=width;
         this.height=height;
@@ -40,7 +46,24 @@ public class Map {
     }
 
     public void put(Chara chara , int x , int y) {
+        charas.add(chara);
         map[x][y].setChara(chara);
         chara.getPosition().setLocation(x, y);
+    }
+    
+    public Tile getTile(Point pos){
+        return map[pos.x][pos.y];
+    }
+    
+    public void moveCharas(){
+        for (Chara chara:charas) {
+            if(chara.getMvAction()!=null){
+                if(getTile(chara.getMvAction().getNewPos()).isWalkable()){
+                    getTile(chara.getPosition()).setChara(null);
+                    chara.getPosition().setLocation(chara.getMvAction().getNewPos());
+                    getTile(chara.getPosition()).setChara(chara);
+                }
+            }
+        }
     }
 }

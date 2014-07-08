@@ -34,4 +34,8 @@ public class Tile implements Drawable{
     public void setChara(Chara chara) {
         character=chara;
     }
+    
+    public boolean isWalkable(){
+        return base.isWalkable()&&character==null;
+    }
 }

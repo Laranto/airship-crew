@@ -35,8 +35,17 @@ public class MainLoop implements Runnable {
     @Override
     public void run() {
         while(gameRunning){
+            if(map!=null){
+            map.moveCharas();
+            }
             for (Container drawable : drawList) {
                 drawable.repaint();
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
     }
