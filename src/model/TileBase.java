@@ -1,9 +1,5 @@
 package model;
 
-import java.lang.reflect.InvocationTargetException;
-
-import model.tilebase.EmptySpace;
-import model.tilebase.OutOfBoundsTile;
 
 public interface TileBase extends Drawable{
     /**

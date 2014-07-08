@@ -3,18 +3,24 @@ package model.tilebase;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 
-import common.Constants;
-
 import model.TileBase;
 
+import common.Constants;
+
 public enum TileEnum{
-    NULL(OutOfBoundsTile.class,null),EMPTY(EmptySpace.class,"sky");
+    NULL(OutOfBoundsTile.class,null),
+    EMPTY(EmptySpace.class,"sky"),
+    FLOOR_WOOD(FloorWood.class,"floor_wood");
+    @SuppressWarnings("rawtypes")
     public Class typeClass;
     public String folderName;
-    private TileEnum(Class typeClass,String folderName) {
+    
+    private TileEnum(@SuppressWarnings("rawtypes") Class typeClass,String folderName) {
         this.typeClass=typeClass;
         this.folderName = folderName;
     }
+    
+    @SuppressWarnings("unchecked")
     public TileBase createInstance(){
         try {
             return (TileBase)typeClass.getConstructor().newInstance();
@@ -23,6 +29,7 @@ public enum TileEnum{
             throw new RuntimeException(e);
         }
     }
+    
     public File getFolder(){
         return new File(Constants.TILES_FOLDER+File.separator+folderName);
     }

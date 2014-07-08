@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import model.Map;
+import model.tilebase.TileEnum;
 import controll.MainLoop;
 import display.ControlPanel;
 import display.MainDisplay;
@@ -30,6 +31,7 @@ public class Main {
         Map map = new Map(30, 30);
         loop.setMap(map);
         display.setMap(map);
+        map.setMapTile(TileEnum.FLOOR_WOOD, 2, 2);
     }
 
 
