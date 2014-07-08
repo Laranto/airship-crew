@@ -1,4 +1,4 @@
-package model.tilebase;
+package model.map.tilebase;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,7 +7,7 @@ import java.awt.Point;
 import common.Constants;
 import common.DrawUtil;
 
-import model.TileBase;
+import model.map.TileBase;
 
 public class OutOfBoundsTile implements TileBase {
 

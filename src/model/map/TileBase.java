@@ -1,4 +1,6 @@
-package model;
+package model.map;
+
+import model.Drawable;
 
 
 public interface TileBase extends Drawable{

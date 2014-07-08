@@ -1,9 +1,10 @@
-package model;
+package model.map;
 
 import java.awt.Graphics;
 import java.awt.Point;
 
-import model.tilebase.EmptySpace;
+import model.Drawable;
+import model.map.tilebase.EmptySpace;
 
 public class Tile implements Drawable{
     private TileBase base;

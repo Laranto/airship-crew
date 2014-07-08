@@ -4,7 +4,7 @@ import java.awt.Container;
 import java.util.HashSet;
 import java.util.Set;
 
-import model.Map;
+import model.map.Map;
 
 
 
