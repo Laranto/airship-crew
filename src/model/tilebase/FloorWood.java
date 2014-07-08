@@ -8,22 +8,17 @@ import model.TileBase;
 
 import common.DrawUtil;
 
-/**
- * Aka "sky"
- * @author Arni
- *
- */
-public class EmptySpace implements TileBase {
+public class FloorWood implements TileBase {
     
     private BufferedImage imageRepresentation;
     
-    public EmptySpace() {
-        imageRepresentation = DrawUtil.getRandomImage(TileEnum.EMPTY);
+    public FloorWood() {
+        imageRepresentation = DrawUtil.getRandomImage(TileEnum.FLOOR_WOOD);
     }
     
     @Override
     public boolean isWalkable() {
-        return false;
+        return true;
     }
 
     @Override

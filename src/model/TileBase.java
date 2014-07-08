@@ -1,9 +1,5 @@
 package model;
 
-import java.lang.reflect.InvocationTargetException;
-
-import model.tilebase.EmptySpace;
-import model.tilebase.OutOfBoundsTile;
 
 public interface TileBase extends Drawable{
     /**
@@ -11,21 +7,4 @@ public interface TileBase extends Drawable{
      * @return
      */
     public boolean isWalkable();
-    
-    
-    public enum TileEnum{
-        NULL(OutOfBoundsTile.class),EMPTY(EmptySpace.class);
-        public Class typeClass;
-        private TileEnum(Class typeClass) {
-            this.typeClass=typeClass;
-        }
-        public TileBase createInstance(){
-            try {
-                return (TileBase)typeClass.getConstructor().newInstance();
-            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
-        }
-    }
 }

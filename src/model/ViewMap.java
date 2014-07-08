@@ -3,8 +3,7 @@ package model;
 import java.awt.Graphics;
 import java.awt.Point;
 
-import model.TileBase.TileEnum;
-import model.tilebase.EmptySpace;
+import model.tilebase.TileEnum;
 
 import common.DrawUtil;
 

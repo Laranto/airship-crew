@@ -2,6 +2,8 @@ package model;
 
 import java.awt.Point;
 
+import model.tilebase.TileEnum;
+
 
 /**
  * The/a Map holding objects. Able to generate view regions for a position that can be then displayed
@@ -32,5 +34,7 @@ public class Map {
         return new ViewMap(map, centerPosition);
     }
     
-    
+    public void setMapTile(TileEnum tileType,int x, int y){
+        map[x][y].setBase(tileType.createInstance());
+    }
 }
