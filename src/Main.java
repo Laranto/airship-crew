@@ -1,6 +1,11 @@
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import sun.misc.Cache;
 
@@ -21,14 +26,39 @@ public class Main {
     private MainLoop loop;
     private HumanInput input;
     
-    public Main() {
-        //Runs in this thread (Display Thread)
+    private void startClient(){
         createFrame();
         //Start a thread with the main loop (Logic Thread)
         new Thread(loop = new MainLoop()).start();
         loop.registerContainer(display);
         addInput();
         createMap();
+    }
+
+
+    private void createMenu() {
+        JFrame menu = new JFrame("Airship Crew Menu");
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel menuPane = new JPanel(new GridLayout(2, 1));
+        JButton joinButton = new JButton("Join");
+        joinButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                startClient();
+            }
+        });
+        JButton hostButton = new JButton("Host");
+        hostButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        menuPane.add(joinButton);
+        menuPane.add(hostButton);
+        menu.add(menuPane);
+        menu.setSize(200, 100);
+        menu.setVisible(true);
     }
 
 
@@ -70,6 +100,11 @@ public class Main {
     
     
     public static void main(String[] args) {
-        new Main();
+        Main entryPoint = new Main();
+        if(args.length>1){
+            entryPoint.startClient();
+        }else{
+            entryPoint.createMenu();
+        }
     }
 }
