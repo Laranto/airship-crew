@@ -13,4 +13,11 @@ public enum Direction {
     public Vector<Integer> getDirectionVector() {
         return directionVector;
     }
+    
+    /**
+     * @return the starting character of the direction in lower-case
+     */
+    public String getShort(){
+		return this.name().substring(0, 1).toLowerCase();
+    }
 }
