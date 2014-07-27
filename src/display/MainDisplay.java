@@ -7,13 +7,13 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import model.character.Chara;
-import model.map.Map;
+import model.map.WorldMap;
 
 import common.Constants;
 
 public class MainDisplay extends JPanel{
     
-    private Map map;
+    private WorldMap map;
     private Chara player;
     
     /**
@@ -34,7 +34,7 @@ public class MainDisplay extends JPanel{
         }
     }
 
-    public void setMap(Map map) {
+    public void setMap(WorldMap map) {
         this.map=map;
     }
 
@@ -46,7 +46,7 @@ public class MainDisplay extends JPanel{
         this.player = player;
     }
 
-    public Map getMap() {
+    public WorldMap getMap() {
         return map;
     }
     

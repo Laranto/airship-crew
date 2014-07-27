@@ -38,4 +38,8 @@ public class Tile implements Drawable{
     public boolean isWalkable(){
         return base.isWalkable()&&character==null;
     }
+
+	public Chara getChara() {
+		return character;
+	}
 }

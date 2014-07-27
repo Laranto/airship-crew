@@ -7,13 +7,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import network.server.AirshipCrewServer;
+
 import sun.misc.Cache;
 
 import model.character.Cat;
 import model.character.Chara;
-import model.map.Map;
+import model.map.WorldMap;
 import model.map.tilebase.TileEnum;
-import controll.MainLoop;
+import control.MainLoop;
 import controll.input.HumanInput;
 import display.ControlPanel;
 import display.MainDisplay;
@@ -34,8 +36,7 @@ public class Main {
         addInput();
         createMap();
     }
-
-
+    
     private void createMenu() {
         JFrame menu = new JFrame("Airship Crew Menu");
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,11 +48,12 @@ public class Main {
                 startClient();
             }
         });
-        JButton hostButton = new JButton("Host");
+        final JButton hostButton = new JButton("Host");
         hostButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                startHost();
+                hostButton.setEnabled(false);
             }
         });
         menuPane.add(joinButton);
@@ -63,7 +65,11 @@ public class Main {
 
 
 
-    private void addInput() {
+    protected void startHost() {
+    	AirshipCrewServer ascs = new AirshipCrewServer(1337);
+	}
+
+	private void addInput() {
         input=new HumanInput();
         display.addKeyListener(input);
     }
@@ -71,7 +77,7 @@ public class Main {
 
 
     private void createMap() {
-        Map map = new Map(40, 40);
+        WorldMap map = new WorldMap(40, 40);
         loop.setMap(map);
         display.setMap(map);
         Chara player = new Cat();

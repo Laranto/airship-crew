@@ -40,9 +40,9 @@ public class Cat extends Chara {
     }
 
     @Override
-    public void move(Direction dir) {
-        facingDirection=dir;
+    public MoveAction move(Direction dir) {
         mvAction=new MoveAction();
+        mvAction.setFacingDirection(dir);
         mvAction.setOldPos(position);
         mvAction.setNewPos(
                 new Point(
@@ -50,5 +50,14 @@ public class Cat extends Chara {
                         dir.getDirectionVector().get(1)+position.y
                         )
                 );
+		return mvAction;
+    }
+    
+    @Override
+    public void executeMoveAction(MoveAction action) {
+    	this.facingDirection=action.getFacingDirection();
+    	position = action.getNewPos();
+    	//TODO Get some translation animation?
+    	//TODO move feet of the thing that moves / toggle pictures
     }
 }
